@@ -26,7 +26,7 @@ export default {
     // 事件操作
     event() {
       return {
-        testClick() {
+        testClick: () => {
           if (this.locale == "zh-CN") {
             this.setLang("en-US");
           } else {
