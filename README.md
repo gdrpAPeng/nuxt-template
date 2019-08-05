@@ -1,22 +1,7 @@
-# nuxt-template
+# nuxt-template (express + ssr)
 
-> My first-class Nuxt.js project
+- 引入 vuex-persistedstate 做 vuex 持久化存储
+- 引入 @nuxtjs/proxy 处理跨域
+- 封装 axios 拦截器
+- 使用 i18n 做多语言包
 
-## Build Setup
-
-``` bash
-# install dependencies
-$ yarn install
-
-# serve with hot reload at localhost:3000
-$ yarn dev
-
-# build for production and launch server
-$ yarn build
-$ yarn start
-
-# generate static project
-$ yarn generate
-```
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).

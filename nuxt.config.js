@@ -30,7 +30,8 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/i18n.js'
+    '@/plugins/i18n.js',
+    { src: '~plugins/persistedstate.js', ssr: false }
   ],
   /*
   ** Nuxt.js dev-modules
