@@ -1,8 +1,10 @@
 <template>
   <div class="container">
     <input v-model="value" />
-    <button @click="event().testClick()">設置vuex</button>
+    <button @click="event().testClick()">設置 lang</button>
     <h1>{{$t('common.test')}} {{ locale }}</h1>
+    <button @click="event().tokenClick()">設置 token</button>
+    <h1>{{ token }}</h1>
   </div>
 </template>
 
@@ -16,13 +18,15 @@ export default {
     };
   },
   computed: {
-    ...mapState(["locale"])
+    ...mapState(["locale"]),
+    ...mapState('auth', ['token'])
   },
   created() {
     this.network().example();
   },
   methods: {
     ...mapActions(["setLang"]),
+    ...mapActions('auth', ['setToken']),
     // 事件操作
     event() {
       return {
@@ -32,6 +36,9 @@ export default {
           } else {
             this.setLang("zh-CN");
           }
+        },
+        tokenClick: () => {
+          this.setToken(this.value)
         }
       };
     },

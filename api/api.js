@@ -1,4 +1,4 @@
-import request from '../assets/jslibs/axios'
+import request from '../util/axios'
 
 export const example = params => {
     return request({
