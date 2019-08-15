@@ -1,11 +1,34 @@
 import createPersistedState from 'vuex-persistedstate'
 
-export default ({ store }) => {
-    if(process.client) {
-        window.onNuxtReady(() => {
-            createPersistedState({
-                storage: window.sessionStorage
-            })(store)
-        })
-    }
+// import * as Cookies from "js-cookie";
+
+// const cookieStorage = {
+//   getItem: function(key) {
+//     return Cookies.getJSON(key);
+//   },
+//   setItem: function(key, value) {
+//     return Cookies.set(key, value, {expires: 3, secure: false});
+//   },
+//   removeItem: function(key) {
+//     return Cookies.remove(key);
+//   }
+// };
+
+// export default ({ store }) => {
+//   createPersistedState({
+//     storage: cookieStorage,
+//     getState: cookieStorage.getItem,
+//     setState: cookieStorage.setItem
+//   })(store)
+// }
+
+export default ({ store, isHMR }) => {
+  if (isHMR) return
+  if (process.client) {
+    window.onNuxtReady(() => {
+      createPersistedState({
+        storage: window.sessionStorage
+      })(store)
+    })
+  }
 }

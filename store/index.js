@@ -1,25 +1,29 @@
 // import Vuex from 'vuex'
 // import createPersistedState from 'vuex-persistedstate'
 // import * as Cookies from 'js-cookie'
+// import VantLocale from '@/plugins/vant-locale'
 const SET_LANG = 'SET_LANG'
+import Cookie from 'js-cookie'
 
 export const state = () => ({
-    locales: ['en-US', 'zh-CN'],
-    locale: 'zh-CN'
+  locales: ['en-US', 'zh-HK'],
+  locale: Cookie.get('lang') || 'zh-HK'
 })
 
 export const mutations = {
-    [SET_LANG](state, locale) {
-        if(state.locales.indexOf(locale) !== -1) {
-            state.locale = locale
-        }
-    },
+  [SET_LANG](state, locale) {
+    if(state.locales.includes(locale)) {
+      state.locale = locale
+      Cookie.set('lang', locale)
+      // this.$vantLocale(locale) // 更新 vant-ui 的語言
+    }
+  },
 }
 
 export const actions = {
-    setLang({ commit }, value) {
-        commit(SET_LANG, value)
-    }
+  setLang({ commit }, value) {
+    commit(SET_LANG, value)
+  }
 }
 
 // const cookieStorage = {

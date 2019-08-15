@@ -1,5 +1,8 @@
 <template>
   <div class="container">
+    <nuxt-link to="/example">
+      Example
+    </nuxt-link>
     <div>
       <logo />
       <h1 class="title">
@@ -38,7 +41,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .container {
   margin: 0 auto;
   min-height: 100vh;

@@ -1,12 +1,13 @@
-export default function({ isHMR, app, store, route, params, error, redirect }) {
-    if(isHMR) return;
-    
-    const locale = params.lang || store.state.locale
-
-    if(route.fullPath === '/') {
-        return redirect(`/${locale}${route.fullPath}`)
-    }
-
+export default function({
+  isHMR,
+  req,
+  store
+}) {
+  if (isHMR) return
+  if (process.server) {
+    const locale = req.cookies.lang || 'zh-HK'
     store.commit('SET_LANG', locale)
-    app.i18n.locale = store.state.locale
+  }
+
+  // console.log(Date.now(), 'i18n')
 }
